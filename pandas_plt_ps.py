@@ -21,16 +21,25 @@ df = pd.read_csv("datasets/Global_Mental_Health_Crisis_Index_2026.csv")
 #
 # print(gdp_geq_40k_low_help[["country","mh_system_score","gdp_per_capita_usd","lack_of_care_mln"]])
 
-top_5 = df.nlargest(5, "depression_pct")
-print(top_5)
+# top_5 = df.nlargest(5, "depression_pct")
+# print(top_5)
+#
+# plt.figure(figsize = (8,4))
+# plt.plot(top_5["country"],top_5["depression_pct"],
+#          marker='o',label="anxiety" )
+# plt.plot(top_5["country"],top_5["anxiety_pct"],
+#          marker='o', label="depression")
+# plt.title("Anxiety vs Depression (%)")
+# plt.xlabel("Country")
+# plt.ylabel("Percents")
+# plt.legend()
+# plt.show()
 
-plt.figure(figsize = (8,4))
-plt.plot(top_5["country"],top_5["depression_pct"],
-         marker='o',label="anxiety" )
-plt.plot(top_5["country"],top_5["anxiety_pct"],
-         marker='o', label="depression")
-plt.title("Anxiety vs Depression (%)")
-plt.xlabel("Country")
-plt.ylabel("Percents")
-plt.legend()
+plt.figure(figsize=(8, 4))
+plt.title("Mental Health vs Social Media")
+plt.xlabel("Hours spent on social media")
+plt.ylabel("Mental crisis score")
+plt.scatter(df["social_media_hours_daily"], df["youth_mh_crisis_score"],
+            s=100, color="red", alpha=0.5)
+plt.grid(True, linestyle="--")
 plt.show()
