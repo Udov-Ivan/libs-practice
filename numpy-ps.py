@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import kagglehub
+from numpy.ma.core import indices
 
 # Live Coding 1
 views = np.array([15000, 32000, 8500, 45000])
@@ -9,14 +10,21 @@ likes = np.array([1200, 3000, 800, 4100])
 comments = np.array([150, 400, 50, 600])
 
 # TODO:
-
-
+total_interactions = likes + comments
+engagement_rate = (total_interactions / views) * 100
+print(f"The engagement rate was{engagement_rate}")
+# indices = np.argwhere(engagement_rate == 9)
+# print(indices)
 
 # Guided Practice 1
 rpm = np.array([1.5, 2.0, 0.8, 2.5])
 production_cost = np.array([10, 30, 5, 50])
 
 # TODO:
+clean_revenue = (views/1000*rpm)-production_cost
+indice = np.argwhere(clean_revenue == max(clean_revenue) )
+print("income: ", np.round(clean_revenue, 2))
+print(indice)
 
 
 
@@ -48,9 +56,9 @@ pings = np.array([
 
 
 # Live Coding 3
-kagglehub.dataset_download("alitaqishah/global-mental-health-crisis-index-2026",
-                                  output_dir="datasets", force_download=True)
+# kagglehub.dataset_download("alitaqishah/global-mental-health-crisis-index-2026",
+#                                   output_dir="datasets", force_download=True)
 df = pd.read_csv("datasets/Global_Mental_Health_Crisis_Index_2026.csv")
-print(df.head())
+# print(df.head())
 
 # TODO:
